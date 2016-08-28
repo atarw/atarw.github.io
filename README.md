@@ -1,4 +1,4 @@
 # atarw.github.io
 Personal website :)
 
-[atarw.me](atarw.me)
+[atarw.me](http://atarw.me)
