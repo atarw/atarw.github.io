@@ -41,16 +41,16 @@ home/about me
 	--search text, tags
 '''
 
-@app.route ('/')
+@app.route ('build/')
 def index ():
 	return render_template ('index.html', pages = pages)
 
-@app.route ('/<path:path>/')
+@app.route ('build/<path:path>/')
 def page (path):
 	page = pages.get_or_404 (path)
 	return render_template ('page.html', page = page)
 
-@app.route ('/tags/<string:tag>/')
+@app.route ('build/tags/<string:tag>/')
 def tag (tag):
 	tagged = [p for p in pages if tag in p.meta.get ('tags', [])]
 	return render_template ('tags.html', pages = tagged, tag = tag)
