@@ -10,7 +10,11 @@ FLATPAGES_EXTENSION = '.md'
 
 app = Flask (__name__)
 app.config.from_object (__name__)
+
+# most recent posts on top
 pages = FlatPages (app)
+pages = sorted (pages, reverse = True)
+
 freezer = Freezer (app)
 
 @app.route ('/')
