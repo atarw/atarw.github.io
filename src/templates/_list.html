@@ -2,6 +2,7 @@
 {% for page in pages %}
     <li>
         <a href="{{ url_for("page", path=page.path) }}">{{ page.title }}</a>
+        | Posted:
         {{ page.date }}
     {% if page.meta.tags|length %}
         | Tagged:
