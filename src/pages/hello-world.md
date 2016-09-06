@@ -1,5 +1,8 @@
 title: Hello World
-date: 2016-09-04
-tags: [general, awesome, stuff]
+date: 2016-09-06
+tags: [general]
 
-**Hello World**, from a *page*!
+This is a portfolio website made by me, Atharva Washimkar!
+The site will contain links to various projects, programming problem solutions, and other cool stuff made by me.
+
+This is done in the hopes that the information here will be useful to someone :)

@@ -13,13 +13,15 @@ app.config.from_object (__name__)
 
 # most recent posts on top
 pages = FlatPages (app)
-pages = sorted (pages, reverse = True)
-
 freezer = Freezer (app)
+
+PROJECT_TAG = 'project'
 
 @app.route ('/')
 def index ():
-	return render_template ('index.html', pages = pages)
+	posts = [p for p in pages if PROJECT_TAG not in p ['tags']]
+	projects = [p for p in pages if PROJECT_TAG in p ['tags']]
+	return render_template ('index.html', posts = posts, projects = projects)
 
 @app.route ('/pages/<path:path>/')
 def page (path):
@@ -28,7 +30,7 @@ def page (path):
 
 @app.route ('/tags/<string:tag>/')
 def tag (tag):
-	tagged = [p for p in pages if tag in p.meta.get ('tags', [])]
+	tagged = [p for p in pages if tag in p ['tags']]
 	return render_template ('tags.html', pages = tagged, tag = tag)
 
 if __name__ == '__main__':
