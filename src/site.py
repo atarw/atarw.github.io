@@ -15,7 +15,8 @@ freezer = Freezer (app)
 
 @app.route ('/')
 def index ():
-	return render_template ('index.html', pages = pages)
+	recent_pages = sorted (pages, reverse = True)
+	return render_template ('index.html', pages = recent_pages [:10])
 
 @app.route ('/pages/<path:path>/')
 def page (path):
