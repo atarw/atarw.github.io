@@ -13,50 +13,25 @@ app.config.from_object (__name__)
 pages = FlatPages (app)
 freezer = Freezer (app)
 
-'''
-Site Structure:
-
-home/about me
-|	|
-|	--personal info, links to other parts of the site, i.e. recent blog posts, projects, etc.
-|
---portfolio
-|	|
-|	--various projects
-|
---blog
-|	|
-|	--various posts
-|
---resume
-|	|
-|	--link to resume as pdf
-|
---contact
-|	|
-|	--contact info
-|
---search
-	|
-	--search text, tags
-'''
-
-@app.route ('/build/')
+@app.route ('/')
 def index ():
 	return render_template ('index.html', pages = pages)
 
-@app.route ('/build/<path:path>/')
+@app.route ('/pages/<path:path>/')
 def page (path):
 	page = pages.get_or_404 (path)
 	return render_template ('page.html', page = page)
 
-@app.route ('/build/tags/<string:tag>/')
+@app.route ('/tags/<string:tag>/')
 def tag (tag):
 	tagged = [p for p in pages if tag in p.meta.get ('tags', [])]
 	return render_template ('tags.html', pages = tagged, tag = tag)
 
 if __name__ == '__main__':
-	if len (sys.argv) > 1 and sys.argv [1] == 'build':
+	# when building static files
+	if len (sys.argv) > 1 and sys.argv [1] == 'freeze':
 		freezer.freeze ()
+
+	# when testing locally
 	else:
 		app.run (port = 8000)
