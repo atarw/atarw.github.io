@@ -1,5 +1,5 @@
 # atarw.github.io
-Personal website, located at [atarw.me](http://atarw.me).
+Personal website, located at [atarw.me](https://atarw.github.io).
 
 Built in Python using Flask and Flask-FlatPages. Frozen-Flask was used to generate static files for hosting on Github Pages.
 
