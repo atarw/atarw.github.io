@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2>Recent Posts</h2>
+    {% with pages=posts  %}
+        {% include "_list.html" %}
+    {% endwith %}
+
+    <h2>Recent Projects</h2>
+    {% with pages=projects %}
+      {% include "_list.html" %}
+    {% endwith %}
+{% endblock content %}
